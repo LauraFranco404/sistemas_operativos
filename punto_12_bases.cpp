@@ -1,29 +1,56 @@
-#include <stdio.h>
-//Punto 2 retorna 1 si es primo, 0 de lo contrario.
-int my_pow(int n, int exp)
-{
-	int ans = 1;
-	if (exp != 0){
-		ans = n*my_pow(n, exp-1);
-	}
-	return ans;
-}
+#include <iostream>
+#include <math.h>
 
+//Clase que contiene metodos estaticos para imprimir un numero n >= 0 con la base 10 como un numero en base 8 o 16.
+class Base{
+	public:
+	Base() = delete;
+
+	static void base10a8(int n){
+		if (n < 8){ 
+			std::cout<<n;
+		}
+		else{
+			base10a8((int)n/8);
+			std::cout<<(n%8);
+		}
+	}
+
+	static void base10a16(int n){
+		if (n < 16){ 
+			int div = (int)n/10;
+			printHexa(n);
+		}
+		else{
+			base10a8((int)n/16);
+			printHexa(n%16);
+		}
+	}
+
+	private: 
+	//Metodo privado, pues solo necesito que base10a16 acceda a esto
+	static void printHexa(int n){
+		int index_letra = 'A';
+		if (n > 9) {
+			std::cout<<(char)('A'+(n-10));
+		}else{
+			std::cout<<n;
+		}
+	}
+
+};
+
+//selecciona la base a imprimir
 void printWBase(int n, int base)
 {
 	if (base == 8){
-		int div = (int)n/base;
-		printf("%d, ", div*my_pow(10,div) + (n%base));
+		Base::base10a8(n);
 	}
 	else if (base == 10){
-		printf("%d, ", n);
+		std::cout<<n;
 	}
 	else if (base == 16){
-		char arr [] = {'A', 'B', 'C', 'D', 'E', 'F'};
-
-		if (n < 10){printf("%d, ", n, base, n);}
-		else { printf("%c, ", arr[n-10]); }
-			
+		Base::base10a16(n);	
 	}
 	else
 	{
@@ -49,8 +76,8 @@ void menu(){
 				for (int i = 1; i<11; i++)
 				{
 					printWBase(i, n);
+					std::cout<< (i == 10 ? "]\n" : ", ");
 				}
-				printf("]\n");
 				break;
 			case 0:
 				printf("----OFF----\n");
@@ -64,8 +91,6 @@ void menu(){
 	}while(opcion != 0);	
 }
 int main(){
-	
 	menu();
-
 	return 0;
 }

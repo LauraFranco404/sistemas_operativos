@@ -2,11 +2,16 @@
 
 //Punto 5
 
-int my_pow(int n, int exp)
+//calcula x^n con un algoritmo O(log(n)) con n >= 0
+int my_pow(int x, int n)
 {
 	int ans = 1;
-	if (exp != 0){
-		ans = n*my_pow(n, exp-1);
+	if (n > 0 && n % 2 == 0)
+	{
+		ans = my_pow(x*x, n / 2);
+	}else if (n > 0 && n % 2 != 0)
+	{
+		ans = x*my_pow(x, n-1);
 	}
 	return ans;
 }

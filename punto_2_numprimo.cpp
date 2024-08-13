@@ -1,15 +1,28 @@
 #include <stdio.h>
+//Punto 2 retorna 1 si es primo, 0 de lo contrario.
 
-//Punto 3 
-int leapyear(int year) { 
-	return year%4 == 0;
-}
+//Clase con metodo estatico para evitar crear una instancia de la misma
+class Primo{
+	public:
+	static int esPrimo(int n){
+		int count = 0;
+		for (int i = 1; i<n; i++)
+		{
+			if (n % i == 0) { 
+				count++;
+			}
+		}
+		return count <= 1;	
+	};
+	
+	Primo() = delete;
+};
 
 void menu(){
 	int opcion;
 	do{
 		printf("----------------MENU------------------------\n");
-		printf("1. Verificar si un anio es bisiesto\n");
+		printf("1. Verificar si un numero es primo\n");
 		printf("0. Salir.\n");
 		printf("Digite el numero del procedimiento a realizar: ");
 		scanf("%d", &opcion);
@@ -18,8 +31,9 @@ void menu(){
 		char c;
 		switch(opcion){
 			case 1:
-				printf("Ingrese un anio: "); scanf("%d", &n);
-				printf(leapyear(n) == 1? "Es bisiesto\n":"No es bisiesto\n");
+				printf("Ingrese un numero: "); scanf("%d", &n);
+				printf(Primo::esPrimo(n) == 1? "Es primo\n":"No es primo\n");
+
 				break;
 			
 			case 0:

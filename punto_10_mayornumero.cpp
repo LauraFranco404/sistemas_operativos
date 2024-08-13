@@ -1,12 +1,13 @@
 #include <stdio.h>
 
+//Calcula el mayor de los numeros x, y, z
 int mayor(int x, int y, int z){
 	
 	int A[3];
 	
 	A[0] = x; A[1] = y; A[2] = z;
 	
-	int max = 0;
+	int max = -(1<<31-1); //minimo entero posible
 	
 	for (int i=0; i < 3; i++ ){
 		if (max < A[i]){
