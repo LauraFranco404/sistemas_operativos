@@ -1,0 +1,6 @@
+#copiar y pegar este comando en la terminal (se requiere g++)
+#compilar
+g++ simulator.cpp interpreter.cpp -o simulator.exe
+
+#ejecutar
+./simulator.exe
