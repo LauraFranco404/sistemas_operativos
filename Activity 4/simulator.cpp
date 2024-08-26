@@ -26,8 +26,11 @@ int main(){
     else { 
         cerr << "ERROR OPENING PROGRAM FILE" << endl; 
     } 
-    printmemo();
+    printMemo();
     fetch();
+
+    cout<<"FINAL!!"<<endl;
+    printMemo();
         
     return 0;
 }
