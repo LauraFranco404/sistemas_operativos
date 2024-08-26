@@ -17,8 +17,9 @@ void fetch(){
 
 void decode()
 {
+    string decodeaux = controlunit;
     char * inst;
-    char * mdrval = &controlunit[0]; // convertir de string a char*
+    char * mdrval = &decodeaux[0]; // convertir de string a char*
     inst = strtok(mdrval, " "); // tomar hasta el primer espacio
     if (strcmp("END", inst) != 0)
     {

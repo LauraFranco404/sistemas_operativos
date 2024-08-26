@@ -7,7 +7,7 @@
 int main(){
     pc = PCINIT;
 
-    ifstream file("programa2.txt"); 
+    ifstream file("programa3.txt"); 
   
     // String to store each line of the file. 
     string line; 
