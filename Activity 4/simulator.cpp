@@ -5,9 +5,9 @@
 
 
 int main(){
-    pc = 1000;
+    pc = PCINIT;
 
-    ifstream file("programa1.txt"); 
+    ifstream file("programa2.txt"); 
   
     // String to store each line of the file. 
     string line; 
@@ -18,7 +18,7 @@ int main(){
             if (line.empty()) { 
                 break; 
             } 
-            memory.insert({pc+i, line});
+            memory[pc+i]= line;
             i++;
         } 
         file.close(); 
@@ -26,11 +26,9 @@ int main(){
     else { 
         cerr << "ERROR OPENING PROGRAM FILE" << endl; 
     } 
-    printMemo();
+    //printMemo();
     fetch();
-
-    cout<<"FINAL!!"<<endl;
-    printMemo();
+    //printMemo();
         
     return 0;
 }
