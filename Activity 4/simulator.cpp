@@ -2,8 +2,6 @@
 #include <fstream>
 #include "interpreter.h"
 
-
-
 int main(){
     pc = PCINIT;
 
